@@ -1,9 +1,6 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# db/seeds.rb
+Book.create(title: "The Great Gatsby", author: "F. Scott Fitzgerald", isbn: "9780743273565")
+Book.create(title: "1984", author: "George Orwell", isbn: "9780451524935")
+Book.create(title: "To Kill a Mockingbird", author: "Harper Lee", isbn: "9780061120084")
+Book.create(title: "Pride and Prejudice", author: "Jane Austen", isbn: "9781503290563")
+Book.create(title: "Moby-Dick", author: "Herman Melville", isbn: "9781851244422")

@@ -1,0 +1,15 @@
+<h1>Books</h1>
+
+<% @books.each do |book| %>
+<div>
+    <h2><%= book.title %></h2>
+    <p><%= book.author %></p>
+    <p><%= book.isbn %></p>
+
+    <% if book.borrowings.empty? %>
+    <%= link_to 'Borrow', borrow_book_path(book) %>
+    <% else %>
+    <p>Already borrowed</p>
+    <% end %>
+</div>
+<% end %>
