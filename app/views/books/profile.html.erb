@@ -1,0 +1,10 @@
+<h1>Your Profile</h1>
+<h2>Currently Borrowed Books</h2>
+
+<% @borrowings.each do |borrowing| %>
+<div>
+    <h3><%= borrowing.book.title %></h3>
+    <p>Due Date: <%= borrowing.due_date %></p>
+    <%= button_to 'Return Book', return_book_path(borrowing.book), method: :post %>
+</div>
+<% end %>

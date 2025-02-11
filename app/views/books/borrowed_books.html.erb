@@ -1,0 +1,14 @@
+<h1>Your Borrowed Books</h1>
+
+<% if @borrowed_books.any? %>
+<ul>
+    <% @borrowed_books.each do |book| %>
+    <li>
+        <strong><%= book.title %></strong> by <%= book.author %><br>
+        Due Date: <%= book.borrowings.find_by(user: current_user).due_date.strftime('%B %d, %Y') %>
+    </li>
+    <% end %>
+</ul>
+<% else %>
+<p>You have not borrowed any books yet.</p>
+<% end %>

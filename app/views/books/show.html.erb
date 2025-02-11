@@ -1,0 +1,14 @@
+<h1>Your Profile</h1>
+<h2>Currently Borrowed Books</h2>
+
+<% if @borrowed_books.any? %>
+<ul>
+    <% @borrowed_books.each do |book| %>
+    <li><%= book.title %> - Due Date: <%= book.borrowings.where(book_id: book.id).first.due_date.to_date %>
+        <%= button_to 'Return', return_book_path(book), method: :post %>
+    </li>
+    <% end %>
+</ul>
+<% else %>
+<p>You haven't borrowed any books yet.</p>
+<% end %>

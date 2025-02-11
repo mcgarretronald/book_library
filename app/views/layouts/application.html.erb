@@ -1,28 +1,97 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= content_for(:title) || "Book Library" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
+
+<head>
+    <title>Book Library</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
 
-    <%= yield :head %>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+        .navbar {
+            background-color: #0044cc;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
 
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 0 15px;
+            font-weight: bold;
+        }
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+        .container {
+            width: 80%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
 
-  <body>
-    <%= yield %>
-  </body>
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-borrow {
+            background-color: green;
+            color: white;
+        }
+
+        .btn-return {
+            background-color: red;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #0044cc;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div>
+            <a href="<%= books_path %>">Book Library</a>
+            <%= link_to 'Profile', user_profile_path %>
+
+        </div>
+        <div>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete if user_signed_in? %>
+        </div>
+    </div>
+
+    <div class="container">
+        <%= yield %>
+    </div>
+
+</body>
+
 </html>

@@ -1,0 +1,7 @@
+// Update the message in the view
+var messageElement = document.getElementById("message_<%= @book.id %>");
+messageElement.innerHTML = "<%= flash[:notice] || flash[:alert] %>";
+
+// Optionally, disable the borrow button to prevent multiple clicks
+var buttonElement = document.getElementById("borrow_button_<%= @book.id %>");
+buttonElement.disabled = true;
