@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # For handling user authentication
   devise_for :users
-
+  get "/users/sign_out", to: "devise/sessions#destroy"
   # Set the root route
   root "books#index"
 end
